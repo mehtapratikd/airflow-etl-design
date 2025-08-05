@@ -42,7 +42,7 @@ def validate_device_metadata(data: pd.DataFrame) -> pd.DataFrame:
         try:
             DeviceMetadata(
                 device_id=row_dict["device_id"],
-                timestamp_iso8601=row_dict["timestamp_iso8601"],
+                timestamp_iso8601=str(row_dict["timestamp_iso8601"]),
                 temperature_sensor_offset_in_celsius=row_dict["temperature_sensor_offset_in_celsius"],
                 humidity_sensor_offset_in_percent=row_dict["humidity_sensor_offset_in_percent"]
             )

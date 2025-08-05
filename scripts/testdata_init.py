@@ -16,7 +16,7 @@ from dags.iot.ingest.tests.data_utils import (
     create_humidity_sensor_telemetry,
     create_temperature_sensor_telemetry,
 )
-from dags.iot.ingest.utils import get_telemery_dirpath, get_device_metadata_dirpath
+from dags.iot.ingest.utils import get_device_metadata_dirpath, get_telemery_dirpath
 
 if __name__ == "__main__":
     s3_client = boto3.client(
@@ -46,13 +46,13 @@ if __name__ == "__main__":
             Body=convert_dataframe_to_parquet_bytes(telemetry)
         )
         dt = utc_now - timedelta(hours=i)
-    dt = utc_now
+    dt = utc_now - timedelta(hours=1)
     for i in range(1, 3):
         devices_metadata = create_device_metadata(
             devices=devices_df, hour=dt.hour, day=dt.day
         )
-        path = "raw/telemetry/" + \
-            get_device_metadata_dirpath(dt) + "/devices_metadata.json"
+        path = "raw/config/" + \
+            get_device_metadata_dirpath(dt) + "/device_metadata.json"
         s3_client.put_object(
             Bucket='data',
             Key=path,

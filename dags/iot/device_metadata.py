@@ -2,6 +2,7 @@ import pendulum
 from airflow.sdk import dag
 
 from dags.iot.ingest.tasks import ingest_device_metadata
+from dags.iot.load.tasks import load_device_metadata
 from dags.iot.transform.tasks import transform_device_metadata
 from dags.iot.validate.tasks import validate_device_metadata
 
@@ -19,7 +20,7 @@ def device_metadata(**kwargs):
     
     ingested = ingest_device_metadata()
     validated = validate_device_metadata(ingested) # pyright: ignore[reportArgumentType]
-    transform_device_metadata(validated) # pyright: ignore[reportArgumentType]
-
+    transformed = transform_device_metadata(validated) # pyright: ignore[reportArgumentType]
+    load_device_metadata(transformed) # pyright: ignore[reportArgumentType]
 
 device_metadata()
