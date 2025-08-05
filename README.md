@@ -7,7 +7,7 @@ IoT devices deployed across agricultural zones.
 
 ### System Design
 
-<img width="1033" height="588" alt="Screenshot 2025-08-05 at 2 44 53 PM" src="https://github.com/user-attachments/assets/4130f4e3-e00d-424c-b148-25882b87f6f3" />
+<img width="800" height="500" alt="Screenshot 2025-08-05 at 3 17 04 PM" src="https://github.com/user-attachments/assets/df179249-7622-411a-899a-7d1057c44b7a" />
 
 
 ### Directory Structure
