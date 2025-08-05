@@ -9,8 +9,9 @@ IoT devices deployed across agricultural zones.
 #### Tech stack
 Apache Airflow, Apache Iceberg, celery, postgres, redis, docker.
 
-### Production Architecture Design
+### System Design
 
+<img width="1033" height="588" alt="Screenshot 2025-08-05 at 2 44 53 PM" src="https://github.com/user-attachments/assets/4130f4e3-e00d-424c-b148-25882b87f6f3" />
 
 
 
@@ -59,11 +60,6 @@ Apache Airflow, Apache Iceberg, celery, postgres, redis, docker.
 ```
 
 ### Run on Local
-
-#### Docker local setup architecture
-
-<img width="825" height="498" alt="Screenshot 2025-08-05 at 2 03 30 PM" src="https://github.com/user-attachments/assets/8795ab12-8a2e-4144-a926-59fe7e917914" />
-
 
 #### Pre-requisites
 - Install docker desktop
