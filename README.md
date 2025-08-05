@@ -2,17 +2,12 @@
 
 ### Description
 
-Architecting and implementing a scalable,
-fault-tolerant data pipeline for processing telemetry and configuration data from thousands of
+Implementing a scalable, fault-tolerant data pipeline for processing telemetry and configuration data from thousands of
 IoT devices deployed across agricultural zones.
-
-#### Tech stack
-Apache Airflow, Apache Iceberg, celery, postgres, redis, docker.
 
 ### System Design
 
 <img width="1033" height="588" alt="Screenshot 2025-08-05 at 2 44 53 PM" src="https://github.com/user-attachments/assets/4130f4e3-e00d-424c-b148-25882b87f6f3" />
-
 
 
 ### Directory Structure
