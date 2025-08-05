@@ -4,6 +4,9 @@
 
 #### Docker local setup architecture
 
+<img width="825" height="498" alt="Screenshot 2025-08-05 at 2 03 30 PM" src="https://github.com/user-attachments/assets/8795ab12-8a2e-4144-a926-59fe7e917914" />
+
+
 #### Pre-requisites
 - Install docker desktop
 - Install python (Recommended version >= 3.12)
