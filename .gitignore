@@ -1,0 +1,9 @@
+data_generator/data/devices.json
+data_generator/data/devices_metadata.json
+data_generator/data/devices_telemetry.parquet
+__pycache__
+.pytest_cache
+.env
+logs/*
+logs/*.*
+.ruff_cache
