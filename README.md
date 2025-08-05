@@ -35,6 +35,6 @@ docker-compose up
 #### Dashboard
 Airflow Dashboard - http://localhost:8080/
 
-##### Login Credentials for local
+Login - Username: airflow | Password: airflow
 
-Username: airflow | Password: airflow
+Flower Dashboard (Monitoring) - http://localhost:5555/
