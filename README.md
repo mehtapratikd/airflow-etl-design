@@ -1,5 +1,63 @@
 # airflow-etl-design
 
+### Description
+
+Architecting and implementing a scalable,
+fault-tolerant data pipeline for processing telemetry and configuration data from thousands of
+IoT devices deployed across agricultural zones.
+
+#### Tech stack
+Apache Airflow, Apache Iceberg, celery, postgres, redis, docker.
+
+### Production Architecture Design
+
+
+
+
+### Directory Structure
+```
+├── config/
+│   ├── airflow_local_settings.py
+│   └── airflow.cfg
+├── dags/
+│   └── iot/
+│       ├── conftest.py
+│       ├── device_metadata.py
+│       ├── ingest/
+│       │   ├── tasks.py
+│       │   ├── tests/
+│       │   │   ├── data_utils.py
+│       │   │   ├── test_device_metadata.py
+│       │   │   └── test_telemetry.py
+│       │   └── utils.py
+│       ├── load/
+│       │   ├── tasks.py
+│       │   └── tests/
+│       │       └── test_device_metadata.py
+│       ├── telemetry.py
+│       ├── transform/
+│       │   ├── tasks.py
+│       │   └── tests/
+│       └── validate/
+│           ├── data_models.py
+│           ├── exceptions.py
+│           ├── tasks.py
+│           └── tests/
+│               └── test_device_metadata.py
+├── docker-compose.yaml
+├── Dockerfile
+├── LICENSE
+├── logs/
+├── plugins/
+├── README.md
+├── requirements.txt
+├── ruff.toml
+└── scripts/
+    ├── __init__.py
+    ├── localstack_init.sh*
+    └── testdata_init.py
+```
+
 ### Run on Local
 
 #### Docker local setup architecture
