@@ -1,8 +1,6 @@
 import os
 
-import pandas as pd
 import pendulum
-import pyarrow
 import pytest
 from botocore.exceptions import ClientError
 

@@ -5,4 +5,4 @@ line-length = 88
 # Add the `line-too-long` rule to the enforced rule set. By default, Ruff omits rules that
 # overlap with the use of a formatter, like Black, but we can override this behavior by
 # explicitly adding the rule.
-extend-select = ["E501", "I"]
+extend-select = ["E501", "I", "F"]

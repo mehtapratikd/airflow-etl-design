@@ -8,6 +8,7 @@ from datetime import timedelta
 import boto3
 import pandas as pa
 import pendulum
+from botocore.exceptions import ClientError
 
 from dags.iot.ingest.tests.data_utils import (
     convert_dataframe_to_parquet_bytes,
@@ -18,14 +19,29 @@ from dags.iot.ingest.tests.data_utils import (
 )
 from dags.iot.ingest.utils import get_device_metadata_dirpath, get_telemery_dirpath
 
+
+def create_s3_bucket_if_not_exists(bucket_name: str, s3_client) -> None:
+    try:
+        s3_client.head_bucket(Bucket='data')
+        print(f"Bucket '{bucket_name}' already exists.")
+    except ClientError:
+        print(f"Bucket '{bucket_name}' does not exist. Creating it...")
+        minio_s3_client.create_bucket(
+            Bucket='data',
+            CreateBucketConfiguration={
+                'LocationConstraint': 'us-east-1'
+            }
+        )
+
 if __name__ == "__main__":
-    s3_client = boto3.client(
+    minio_s3_client = boto3.client(
         's3',
-        endpoint_url="http://host.docker.internal:4566",
+        endpoint_url="http://host.docker.internal:9000",
         region_name="us-east-1",
-        aws_access_key_id="test",
-        aws_secret_access_key="test"
+        aws_access_key_id="admin",
+        aws_secret_access_key="password"
     )
+    create_s3_bucket_if_not_exists(bucket_name='data', s3_client=minio_s3_client)
     devices_df = create_device_ids(100)
     utc_now = pendulum.now('UTC')
     dt = utc_now
@@ -40,7 +56,7 @@ if __name__ == "__main__":
             temperature_telemetry, humidity_telemetry]).sample(frac=1
         )
         path = "raw/telemetry/" + get_telemery_dirpath(dt) + "/telemetry.parquet"
-        s3_client.put_object(
+        minio_s3_client.put_object(
             Bucket='data',
             Key=path,
             Body=convert_dataframe_to_parquet_bytes(telemetry)
@@ -53,7 +69,7 @@ if __name__ == "__main__":
         )
         path = "raw/config/" + \
             get_device_metadata_dirpath(dt) + "/device_metadata.json"
-        s3_client.put_object(
+        minio_s3_client.put_object(
             Bucket='data',
             Key=path,
             Body=devices_metadata.to_json(orient='records')

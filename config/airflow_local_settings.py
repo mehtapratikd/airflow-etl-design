@@ -7,10 +7,10 @@ def get_airflow_context_vars(context) -> dict[str, str]:
     """
     return {
         # S3
-        "S3_HOST": os.getenv('S3_HOST', 'http://host.docker.internal:4566'),
+        "S3_HOST": os.getenv('S3_HOST', 'http://host.docker.internal:9000'),
         "S3_REGION": os.getenv('S3_REGION', 'us-east-1'),
-        "S3_AWS_ACCESS_KEY_ID": os.getenv('S3_AWS_ACCESS_KEY_ID', 'test'),
-        "S3_AWS_ACCESS_KEY_SECRET": os.getenv('S3_AWS_ACCESS_KEY_SECRET', 'test'),
+        "S3_AWS_ACCESS_KEY_ID": os.getenv('S3_AWS_ACCESS_KEY_ID', 'admin'),
+        "S3_AWS_ACCESS_KEY_SECRET": os.getenv('S3_AWS_ACCESS_KEY_SECRET', 'password'),
 
         # Telemetry bucket
         "TELEMETRY_BUCKET_NAME": os.getenv('TELEMETRY_BUCKET_NAME', 'data'),
